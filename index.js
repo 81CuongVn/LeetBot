@@ -1,6 +1,7 @@
 
 const {Client, Intents, MessageEmbed} = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] })
+const keepAlive = require("./server");
 const axios = require('axios');
 
 let totalQ = [];
@@ -20,7 +21,8 @@ var version = "1.0.0";
   this.title = problem.stat.question__title;
   this.totalSubmitted = problem.stat.total_submitted;
   this.difficulty = problem.difficulty.level === 3 ? "Hard" : problem.difficulty.level === 2 ? "Medium" : "Easy";
-  this.description = `\n Difficulty: ${this.difficulty}`;
+  this.description = `\n Difficulty: ${this.difficulty}
+                      \n Total submission: ${this.totalSubmitted}`;
 
   this.title = problem.stat.question__title;
 }
@@ -145,11 +147,12 @@ client.on("message", msg => {
  
   if (msg.content.startsWith("!")) {
      if (msg.content.includes("help")) {
-    msg.reply(`How to use LeetBot: 
-              !help : all commands \n
-              !grind : random questions \n
-              !grind easy/medium/hard : random easy/medium/hard questions \n
-              !grind popular easy/medium/hard: random popular easy/medium/hard questions \n
+    msg.reply(`How to use LeetBot: \n 
+          ❓    !help : all commands \n
+          💡    !total : total leetcode questions \n
+          💻   !grind : random questions \n
+          📊   !grind easy/medium/hard : random easy/medium/hard questions \n
+          📈   !grind popular easy/medium/hard: random popular easy/medium/hard questions \n
               `);
        
   }
@@ -157,21 +160,21 @@ client.on("message", msg => {
     msg.reply(`Leetcode has ${totalQ.length-1} questions`);
   }
   else if (msg.content === "!grind" && loading) {
-    console.log("me");
+    
     renderQ(freeQ, msg);  
   
   }
   else if (findDiff(msg.content) && !findPop(msg.content) && loading) {
-     console.log("mew");
+     
         renderQ(freeQ, msg);  
   }
   else if (findDiff(msg.content) && findPop(msg.content) && loading) {
-     console.log("meo");
+     
         renderPop(freeQ,msg);
   }
   }
   
 })
 
-
+keepAlive();
 client.login(process.env.TOKEN);
