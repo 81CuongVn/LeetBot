@@ -1,6 +1,15 @@
-# Welcome to Node 16!
+# LeetBot - Leetcode generate bot 
 
-This template provides an easy way to use NodeJS v16 on Replit! As of writing, NodeJS repls have Node v12, which is several years out of date.
+A discord bot that can generate Leetcode questions from commands below:
+    
+          ❓    !help : all commands 
 
-## Differences from Node Repls
-If you're used to the Node repl environment, you'll notice that there's no unit testing menu. To use unit tests, try using a library such as [Testing Library](https://testing-library.com/) or [Jest](https://jestjs.io/).
+          💡    !total : total leetcode questions 
+
+          💻   !grind : random questions 
+
+          📊   !grind easy/medium/hard : random easy/medium/hard questions 
+
+          📈   !grind popular easy/medium/hard: random popular easy/medium/hard questions
+
+### Link to add the bot: https://discord.com/api/oauth2/authorize?client_id=901005066549469184&permissions=377957156864&scope=bot
