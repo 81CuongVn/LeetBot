@@ -1,4 +1,4 @@
-# LeetBot - Leetcode generate bot 
+# 👾 LeetBot v1.0.0 - Leetcode generate Discord bot 👾
 
 A discord bot that can generate Leetcode questions from commands below:
     
